@@ -13,7 +13,8 @@ services:
 
   postgres:
     image: postgres:14
-    volumes: drupal-data:/var/lib/postgresql/data
+    volumes:
+      - drupal-data:/var/lib/postgresql/data
     environment:
       POSTGRES_PASSWORD: example
     restart: always
@@ -25,10 +26,11 @@ services:
     ports:
       - "8080:80"
     depends_on:
-      - drupal
+      - custom-drupal
 
 volumes:
   drupal-modules:
   drupal-profiles:
   drupal-sites:
   drupal-themes:
+  drupal-data:
